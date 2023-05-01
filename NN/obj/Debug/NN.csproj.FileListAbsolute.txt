@@ -6,3 +6,11 @@ C:\Users\motyr\source\repos\NN\NN\obj\Debug\NN.csproj.SuggestedBindingRedirects.
 C:\Users\motyr\source\repos\NN\NN\obj\Debug\NN.csproj.CoreCompileInputs.cache
 C:\Users\motyr\source\repos\NN\NN\obj\Debug\NN.exe
 C:\Users\motyr\source\repos\NN\NN\obj\Debug\NN.pdb
+C:\Users\motyr\Desktop\nn\NN\bin\Debug\NN.exe.config
+C:\Users\motyr\Desktop\nn\NN\bin\Debug\NN.exe
+C:\Users\motyr\Desktop\nn\NN\bin\Debug\NN.pdb
+C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.csproj.AssemblyReference.cache
+C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.csproj.SuggestedBindingRedirects.cache
+C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.csproj.CoreCompileInputs.cache
+C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.exe
+C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.pdb

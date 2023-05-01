@@ -63,6 +63,7 @@ namespace NN
         }
         public void SetWeights(List<double> doubles)
         {
+            Weights.Clear();
             for (int i = 0; i < doubles.Count; i++)
             {
                 Weights.Add(doubles[i]);
