@@ -38,6 +38,24 @@ namespace NN
                 Inputs.Add(0);
             }
         }
+        public void Learn(double error, double learningRate)
+        {
+            if (NeuronType == NeuronType.Input)
+            {
+                return;
+            }
+
+            Delta = error * ActivationFunction.Derrative(Output);
+
+            for (int i = 0; i < Weights.Count; i++)
+            {
+                var weight = Weights[i];
+                var input = Inputs[i];
+
+                var newWeigth = weight - input * Delta * learningRate;
+                Weights[i] = newWeigth;
+            }
+        }
         public double FeedForward(List<double> inputs)
         {
             for (int i = 0; i < inputs.Count; i++)

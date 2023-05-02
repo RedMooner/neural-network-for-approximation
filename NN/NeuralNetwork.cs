@@ -12,7 +12,7 @@ namespace NN
             Topology = topology;
 
             Layers = new List<Layer>();
-            if(activationFunctions.Length != 3)
+            if (activationFunctions.Length != 3)
                 throw new System.ArgumentException("Error, activations function must be a three");
 
             CreateInputLayer(activationFunctions[0]);
@@ -32,6 +32,68 @@ namespace NN
             {
                 return Layers.Last().Neurons.OrderByDescending(n => n.Output).First();
             }
+        }
+        public double Learn(double[] expected, double[,] inputs, int epoch)
+        {
+            var error = 0.0;
+            for (int i = 0; i < epoch; i++)
+            {
+                for (int j = 0; j < expected.Length; j++)
+                {
+                    var output = expected[j];
+                    var input = GetRow(inputs, j);
+
+                    error += Backpropagation(output, input);
+                }
+            }
+
+            var result = error / epoch;
+            return result;
+        }
+        private double Backpropagation(double exprected, params double[] inputs)
+        {
+            var actual = Predict(inputs).Output;
+
+            var difference = actual - exprected;
+
+            foreach (var neuron in Layers.Last().Neurons)
+            {
+                neuron.Learn(difference, Topology.LearningRate);
+            }
+
+            for (int j = Layers.Count - 2; j >= 0; j--)
+            {
+                var layer = Layers[j];
+                var previousLayer = Layers[j + 1];
+
+                for (int i = 0; i < layer.NeuronCount; i++)
+                {
+                    var neuron = layer.Neurons[i];
+
+                    for (int k = 0; k < previousLayer.NeuronCount; k++)
+                    {
+                        var previousNeuron = previousLayer.Neurons[k];
+                        var error = previousNeuron.Weights[i] * previousNeuron.Delta;
+                        neuron.Learn(error, Topology.LearningRate);
+                    }
+                }
+            }
+
+            var result = difference * difference;
+            return result;
+        }
+
+        public static double[] GetRow(double[,] matrix, int row)
+        {
+            var columns = matrix.GetLength(1);
+            var array = new double[columns];
+            for (int i = 0; i < columns; ++i)
+                array[i] = matrix[row, i];
+            return array;
+        }
+        private void BackPropagationMethod()
+        {
+
         }
         private void FeedForwardAllLayersAfterInput()
         {
