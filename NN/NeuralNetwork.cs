@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NN
@@ -48,6 +49,7 @@ namespace NN
             }
 
             var result = error / epoch;
+        
             return result;
         }
         private double Backpropagation(double exprected, params double[] inputs)
@@ -90,10 +92,6 @@ namespace NN
             for (int i = 0; i < columns; ++i)
                 array[i] = matrix[row, i];
             return array;
-        }
-        private void BackPropagationMethod()
-        {
-
         }
         private void FeedForwardAllLayersAfterInput()
         {
