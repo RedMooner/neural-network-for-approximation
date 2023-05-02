@@ -13,8 +13,8 @@ namespace NN
         {
             Sigmoid sigmoid = new Sigmoid();
             Linear linearlinear = new Linear(); 
-            var topology = new Topology(3, 1, 0.007, 2);
-            var neuralNetwork = new NeuralNetwork(topology, sigmoid, sigmoid, linearlinear);
+            var topology = new Topology(3, 1, 0.01, 2);
+            var neuralNetwork = new NeuralNetwork(topology, sigmoid, sigmoid, sigmoid);
 
             //neuralNetwork.Layers[1].Neurons[0].SetWeights(new System.Collections.Generic.List<double>() { 0.25, 0.25, 0 });
             //neuralNetwork.Layers[1].Neurons[1].SetWeights(new System.Collections.Generic.List<double>() { 0.5, -0.4, 0.9 });
@@ -34,13 +34,14 @@ namespace NN
                 {1,1,0 },
                 {1,1,1 },
             };
-            neuralNetwork.Learn(expected, inputs, 5100);
+            neuralNetwork.Learn(expected, inputs, 5000);
 
             Console.WriteLine(neuralNetwork.Predict(0, 0, 0).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(0, 0, 1).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(0, 1, 0).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(0, 1, 1).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(1, 0, 0).Output > 0.5);
+            Console.WriteLine(neuralNetwork.Predict(1, 0, 1).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(1, 1, 0).Output > 0.5);
             Console.WriteLine(neuralNetwork.Predict(1, 1, 1).Output > 0.5);
 
