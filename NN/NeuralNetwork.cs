@@ -7,15 +7,17 @@ namespace NN
     {
         public List<Layer> Layers;
         public Topology Topology { get; }
-        public NeuralNetwork(Topology topology)
+        public NeuralNetwork(Topology topology, params IActivationFunction[] activationFunctions)
         {
             Topology = topology;
 
             Layers = new List<Layer>();
+            if(activationFunctions.Length != 3)
+                throw new System.ArgumentException("Error, activations function must be a three");
 
-            CreateInputLayer(new Sigmoid());
-            CreateHiddenLayers();
-            CreateOutputLayer();
+            CreateInputLayer(activationFunctions[0]);
+            CreateHiddenLayers(activationFunctions[1]);
+            CreateOutputLayer(activationFunctions[2]);
         }
         public Neuron Predict(params double[] inputSignals)
         {
@@ -55,20 +57,20 @@ namespace NN
                 neuron.FeedForward(signal);
             }
         }
-        private void CreateOutputLayer()
+        private void CreateOutputLayer(IActivationFunction function)
         {
             var outputNeurons = new List<Neuron>();
             var lastLayer = Layers.Last();
             for (int i = 0; i < Topology.OutputCount; i++)
             {
-                var neuron = new Neuron(lastLayer.NeuronCount, lastLayer.ActivationFunction, NeuronType.Output);
+                var neuron = new Neuron(lastLayer.NeuronCount, function, NeuronType.Output);
                 outputNeurons.Add(neuron);
             }
-            var outputLayer = new Layer(outputNeurons, lastLayer.ActivationFunction, NeuronType.Output);
+            var outputLayer = new Layer(outputNeurons, function, NeuronType.Output);
             Layers.Add(outputLayer);
         }
 
-        private void CreateHiddenLayers()
+        private void CreateHiddenLayers(IActivationFunction function)
         {
             for (int j = 0; j < Topology.HiddenLayers.Count; j++)
             {
@@ -76,10 +78,10 @@ namespace NN
                 var lastLayer = Layers.Last();
                 for (int i = 0; i < Topology.HiddenLayers[j]; i++)
                 {
-                    var neuron = new Neuron(lastLayer.NeuronCount, lastLayer.ActivationFunction);
+                    var neuron = new Neuron(lastLayer.NeuronCount, function);
                     hiddenNeurons.Add(neuron);
                 }
-                var hiddenLayer = new Layer(hiddenNeurons, lastLayer.ActivationFunction, NeuronType.Normal);
+                var hiddenLayer = new Layer(hiddenNeurons, function, NeuronType.Normal);
                 Layers.Add(hiddenLayer);
             }
         }

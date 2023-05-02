@@ -14,3 +14,11 @@ C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.csproj.SuggestedBindingRedirects.cache
 C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.csproj.CoreCompileInputs.cache
 C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.exe
 C:\Users\motyr\Desktop\nn\NN\obj\Debug\NN.pdb
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\bin\Debug\NN.exe.config
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\bin\Debug\NN.exe
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\bin\Debug\NN.pdb
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\obj\Debug\NN.csproj.AssemblyReference.cache
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\obj\Debug\NN.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\obj\Debug\NN.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\obj\Debug\NN.exe
+C:\Users\Alex\Source\Repos\neural-network-for-approximation\NN\obj\Debug\NN.pdb
